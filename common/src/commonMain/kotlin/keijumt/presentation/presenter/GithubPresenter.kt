@@ -2,7 +2,6 @@ package keijumt.presentation.presenter
 
 import keijumt.presentation.view.GithubView
 import keijumt.repository.GithubRepository
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
@@ -17,9 +16,6 @@ class GithubPresenterImpl(
 ) : CoroutinePresenter(context), GithubPresenter {
 
     override fun fetchUser(userId: String) {
-        launch(Dispatchers.Main) {
-
-        }
         launch {
             view.showUser(githubRepository.getUser("keijumt"))
         }
