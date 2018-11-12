@@ -1,4 +1,4 @@
-package keijumt.api
+package keijumt.library.api
 
 import io.ktor.client.HttpClient
 import io.ktor.client.features.json.JsonFeature

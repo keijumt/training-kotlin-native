@@ -1,4 +1,4 @@
-package keijumt.model
+package keijumt.library.model
 
 import kotlinx.serialization.Serializable
 

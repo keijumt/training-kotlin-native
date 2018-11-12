@@ -1,9 +1,9 @@
-package keijumt.api
+package keijumt.library.api
 
 import io.ktor.client.features.json.serializer.KotlinxSerializer
 import io.ktor.client.request.get
 import io.ktor.client.request.url
-import keijumt.model.User
+import keijumt.library.model.User
 
 class GithubApi : Api() {
 

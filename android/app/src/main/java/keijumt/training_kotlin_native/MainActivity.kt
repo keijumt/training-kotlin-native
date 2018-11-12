@@ -3,17 +3,16 @@ package keijumt.training_kotlin_native
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import keijumt.api.GithubApi
-import keijumt.model.User
-import keijumt.presentation.presenter.GithubPresenterImpl
-import keijumt.presentation.view.GithubView
-import keijumt.repository.GithubRepositoryImpl
+import keijumt.library.api.GithubApi
+import keijumt.library.model.User
+import keijumt.library.presentation.presenter.GithubPresenterImpl
+import keijumt.library.presentation.view.GithubView
+import keijumt.library.repository.GithubRepositoryImpl
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.coroutines.Dispatchers
 
 class MainActivity : AppCompatActivity(), GithubView {
 
-    private val presenter by lazy { GithubPresenterImpl(Dispatchers.Main, this, GithubRepositoryImpl(GithubApi())) }
+    private val presenter by lazy { GithubPresenterImpl(this, GithubRepositoryImpl(GithubApi())) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

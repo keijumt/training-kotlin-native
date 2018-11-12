@@ -1,19 +1,17 @@
-package keijumt.presentation.presenter
+package keijumt.library.presentation.presenter
 
-import keijumt.presentation.view.GithubView
-import keijumt.repository.GithubRepository
+import keijumt.library.presentation.view.GithubView
+import keijumt.library.repository.GithubRepository
 import kotlinx.coroutines.launch
-import kotlin.coroutines.CoroutineContext
 
 interface GithubPresenter {
     fun fetchUser(userId: String)
 }
 
 class GithubPresenterImpl(
-        context: CoroutineContext,
         private val view: GithubView,
         private val githubRepository: GithubRepository
-) : CoroutinePresenter(context), GithubPresenter {
+) : CoroutinePresenter(), GithubPresenter {
 
     override fun fetchUser(userId: String) {
         launch {

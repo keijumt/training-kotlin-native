@@ -1,7 +1,7 @@
-package keijumt.repository
+package keijumt.library.repository
 
-import keijumt.api.GithubApi
-import keijumt.model.User
+import keijumt.library.api.GithubApi
+import keijumt.library.model.User
 
 interface GithubRepository {
     suspend fun getUser(userId: String): User
