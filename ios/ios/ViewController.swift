@@ -9,16 +9,19 @@
 import UIKit
 import common
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, GithubView {
 
     @IBOutlet weak var sampleLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.sampleLabel.text = CommonKt.createApplicationScreenMessage()
+        let presenter = GithubPresenterImpl(view: self, githubRepository: GithubRepositoryImpl(githubApi: GithubApi()))
+        presenter.fetchUser(userId: "keijumt")
     }
-
-
+    
+    func showUser(user: User) {
+        sampleLabel.text = user.name
+    }
 }
 
