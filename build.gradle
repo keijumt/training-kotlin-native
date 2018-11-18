@@ -4,7 +4,6 @@ buildscript {
     repositories {
         maven { url "https://kotlin.bintray.com/kotlinx" }
         maven { url 'https://dl.bintray.com/jetbrains/kotlin-native-dependencies' }
-        maven { url 'https://dl.bintray.com/jetbrains/kotlin-native-dependencies' }
         google()
         jcenter()
     }
