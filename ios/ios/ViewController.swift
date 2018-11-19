@@ -13,15 +13,24 @@ class ViewController: UIViewController, GithubView {
 
     @IBOutlet weak var sampleLabel: UILabel!
     
+    private var presenter: GithubPresenter!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let presenter = GithubPresenterImpl(view: self, githubRepository: GithubRepositoryImpl(githubApi: GithubApi()))
+        presenter = PresenterFactory().getGithubPresenter(githubView: self)
         presenter.fetchUser(userId: "keijumt")
     }
     
     func showUser(user: User) {
         sampleLabel.text = user.name
     }
+    
+    func showError(message: String) {
+        sampleLabel.text = message
+    }
+    
+    deinit {
+        presenter.onDestroy()
+    }
 }
-
