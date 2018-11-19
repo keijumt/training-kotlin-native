@@ -5,7 +5,7 @@ import keijumt.library.presentation.view.GithubView
 import keijumt.library.repository.GithubRepository
 import kotlinx.coroutines.launch
 
-interface GithubPresenter {
+interface GithubPresenter : Presenter {
     fun fetchUser(userId: String)
 }
 
@@ -17,7 +17,12 @@ internal class GithubPresenterImpl(
 
     override fun fetchUser(userId: String) {
         launch {
-            view.showUser(githubRepository.getUser("keijumt"))
+            try {
+                val user = githubRepository.getUser("keijumt")
+                view.showUser(user)
+            } catch (t: Throwable) {
+                view.showError(t.toString())
+            }
         }
     }
 }
