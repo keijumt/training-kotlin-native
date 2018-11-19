@@ -1,20 +1,11 @@
 package keijumt.library.api
 
-import io.ktor.client.features.json.serializer.KotlinxSerializer
-import io.ktor.client.request.get
-import io.ktor.client.request.url
 import keijumt.library.model.User
 
-class GithubApi : Api() {
+internal interface GithubApi {
+    suspend fun getUser(userId: String): User
+}
 
-    override val baseUrl: String
-        get() = "https://api.github.com"
-
-    suspend fun getUser(userId: String): User = client.get(path = "users/$userId") {
-        url(baseUrl)
-    }
-
-    override fun getSerializer() = KotlinxSerializer().apply {
-        setMapper(User::class, User.serializer())
-    }
+internal class GithubApiImpl(private val apiClient: ApiClient) : GithubApi {
+    override suspend fun getUser(userId: String): User = apiClient.get("users/$userId")
 }
