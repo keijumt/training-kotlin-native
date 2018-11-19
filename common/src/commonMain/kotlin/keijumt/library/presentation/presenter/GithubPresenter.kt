@@ -8,7 +8,7 @@ interface GithubPresenter {
     fun fetchUser(userId: String)
 }
 
-class GithubPresenterImpl(
+internal class GithubPresenterImpl(
         private val view: GithubView,
         private val githubRepository: GithubRepository
 ) : CoroutinePresenter(), GithubPresenter {
