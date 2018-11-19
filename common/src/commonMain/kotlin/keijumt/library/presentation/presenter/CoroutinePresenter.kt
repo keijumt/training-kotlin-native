@@ -5,14 +5,14 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlin.coroutines.CoroutineContext
 
-open class CoroutinePresenter : CoroutineScope {
+internal abstract class CoroutinePresenter : CoroutineScope {
 
     private val job = Job()
 
     override val coroutineContext: CoroutineContext
         get() = applicationDispatcher + job
 
-    open fun onDestory() {
+    open fun onDestroy() {
         job.cancel()
     }
 }
